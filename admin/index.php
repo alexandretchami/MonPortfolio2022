@@ -58,11 +58,6 @@ $user_data = mysqli_fetch_array($run);
         <!-- Notifications Dropdown Menu -->
 
         <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="../include/logout.php">
             Logout
           </a>
@@ -113,7 +108,78 @@ $user_data = mysqli_fetch_array($run);
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Section Control
-                  <i class="right"></i>
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?homesetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  Home Setting
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?aboutsetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  About Seting
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?resumesetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  Resume Setting
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?portfoliosetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  Portfolio Setting
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?contactsetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  Contact Setting
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?changebackground=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  Change Background
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?seosetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  SEO Setting
+                </p>
+              </a>
+
+            </li>
+            <li class="nav-item menu-open">
+              <a href="index.php?accountsetting=true" class="nav-link">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>
+                  Account Setting
                 </p>
               </a>
 
@@ -133,13 +199,7 @@ $user_data = mysqli_fetch_array($run);
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Show / Hide Menu</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
+              <h1 class="m-0">Manage Site</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -154,56 +214,209 @@ $user_data = mysqli_fetch_array($run);
           <!-- /.row -->
           <!-- Main row -->
           <div class="row">
-            <form action="">
+            <?php
+            if (isset($_GET['homesetting'])) { ?>
+              <div class="card card-primary col-lg-12">
+                <div class="card-header">
+                  <h3 class="card-title">Update Home</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" action="../include/admin.php" method="POST">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Headline</label>
+                      <input type="text" class="form-control" name="title" value="<?php echo $user_data['title']; ?>" id="exampleInputEmail1" placeholder="Enter headline">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Subtitle</label>
+                      <input type="text" class="form-control" name="subtitle" value="<?php echo $user_data['subtitle']; ?>" id="exampleInputPassword1" placeholder="Enter subtitle">
+                    </div>
 
-              <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                <input type="checkbox" name="home" class="custom-control-input" id="customSwitch1" <?php
+                    <div class="form-check">
+                      <input type="checkbox" name="showicons" class="form-check-input" id="exampleCheck1" <?php
 
-                                                                                                    if ($user_data['home_section']) {
-                                                                                                      echo "checked";
-                                                                                                    }
-                                                                                                    ?>>
-                <label class="custom-control-label" for="customSwitch1">Home Section</label>
+                                                                                                          if ($user_data['show_icons']) {
+                                                                                                            echo "checked";
+                                                                                                          } ?>>
+                      <label class="form-check-label" for="exampleCheck1">Show Social Icons</label>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <button type="submit" name="update-home" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
+              </div>
+            <?php
+
+            } else if (isset($_GET['aboutsetting'])) {
+            ?>
+              <div class="card card-primary col-lg-12">
+                <div class="card-header">
+                  <h3 class="card-title">Update About</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <img src="../images/<?php echo $user_data['profile_pic']; ?>" class="col-2">
+
+                <form role="form" action="../include/admin.php" method="POST" enctype="multipart/form-data">
+                  <div class="card-body">
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">About Profile Pic</label>
+                      <input type="file" class="form-control" name="profile_pic">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">About Headline</label>
+                      <input type="text" class="form-control" name="about_title" value="<?php echo $user_data['about_title']; ?>" id="exampleInputEmail1" placeholder="Enter headline">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">About Subtitle</label>
+                      <input type="text" class="form-control" name="about_subtitle" value="<?php echo $user_data['about_subtitle']; ?>" id="exampleInputPassword1" placeholder="Enter subtitle">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">About Description</label><br>
+                      <textarea cols="100" name="about_desc"><?php echo $user_data['about_desc']; ?></textarea>
+                    </div>
+
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <button type="submit" name="update-about" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
               </div>
 
-              <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                <input type="checkbox" name="about" class="custom-control-input" id="customSwitch2" <?php
-                                                                                                    if ($user_data['about_section']) {
-                                                                                                      echo "checked";
-                                                                                                    }
-                                                                                                    ?>>
-                <label class="custom-control-label" for="customSwitch2">About Section</label>
+              <div class="card card-primary col-lg-12">
+                <div class="card-header">
+                  <h3 class="card-title">Manage Skills</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Skills</h3>
+
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Skill Name</th>
+                          <th>Skill Level</th>
+                          <th style="width: 40px">Level</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $q = "SELECT * FROM skills";
+                        $r = mysqli_query($db, $q);
+                        $c = 1;
+                        while ($skill = mysqli_fetch_array($r)) {
+                        ?>
+                          <tr>
+                            <td><?php echo $c; ?></td>
+                            <td><?php echo $skill['skill_name']; ?></td>
+                            <td>
+                              <div class="progress progress-xs">
+                                <div class="progress-bar progress-bar-danger" style="width: <?php echo $skill['skill_level']; ?>"></div>
+                              </div>
+                            </td>
+                            <td><span class="badge bg-danger"><?php echo $skill['skill_level']; ?>%</span></td>
+                          </tr>
+                        <?php
+                          $c++;
+                        }
+
+                        ?>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+
+                <form role="form" action="../include/admin.php" method="POST">
+                  <div class="card-body">
+
+                    <div class="form-group col-6">
+                      <label for="exampleInputEmail1">Skill Name</label>
+                      <input type="text" class="form-control" name="skill_name">
+                    </div>
+
+                    <div class="form-group col-6">
+                      <label for="exampleInputEmail1">Skill Level</label>
+                      <input type="range" min="1" max="100" class="form-control" name="skill_level" id="exampleInputEmail1">
+                    </div>
+
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <button type="submit" name="update-about" class="btn btn-primary">Add Skill</button>
+                  </div>
+                </form>
               </div>
 
-              <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                <input type="checkbox" name="resume" class="custom-control-input" id="customSwitch3" <?php
-                                                                                                      if ($user_data['resume_section']) {
+            <?php
+            } else {
+            ?>
+
+              <form action="../include/admin.php" method="POST">
+
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                  <input type="checkbox" name="home" class="custom-control-input" id="customSwitch1" <?php
+
+                                                                                                      if ($user_data['home_section']) {
                                                                                                         echo "checked";
-                                                                                                      }
-                                                                                                      ?>>
-                <label class="custom-control-label" for="customSwitch3">Resume Section</label>
-              </div>
+                                                                                                      } ?>>
+                  <label class="custom-control-label" for="customSwitch1">Home Section</label>
+                </div>
 
-              <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                <input type="checkbox" name="portfolio" class="custom-control-input" id="customSwitch4" <?php
-                                                                                                        if ($user_data['portfolio_section']) {
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                  <input type="checkbox" name="about" class="custom-control-input" id="customSwitch2" <?php
+                                                                                                      if ($user_data['about_section']) {
+                                                                                                        echo "checked";
+                                                                                                      } ?>>
+                  <label class="custom-control-label" for="customSwitch2">About Section</label>
+                </div>
+
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                  <input type="checkbox" name="resume" class="custom-control-input" id="customSwitch3" <?php
+                                                                                                        if ($user_data['resume_section']) {
                                                                                                           echo "checked";
-                                                                                                        }
-                                                                                                        ?>>
-                <label class="custom-control-label" for="customSwitch4">Portfolio Section</label>
-              </div>
+                                                                                                        } ?>>
+                  <label class="custom-control-label" for="customSwitch3">Resume Section</label>
+                </div>
 
-              <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                <input type="checkbox" name="contact" class="custom-control-input" id="customSwitch5" <?php
-                                                                                                      if ($user_data['contact_section']) {
-                                                                                                        echo "checked";
-                                                                                                      }
-                                                                                                      ?>>
-                <label class="custom-control-label" for="customSwitch5">Contact Section</label>
-              </div>
-              <input type="submit" class="btn btn-sm btn-primary" name="update-section" value="Save Changes">
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                  <input type="checkbox" name="portfolio" class="custom-control-input" id="customSwitch4" <?php
+                                                                                                          if ($user_data['portfolio_section']) {
+                                                                                                            echo "checked";
+                                                                                                          } ?>>
+                  <label class="custom-control-label" for="customSwitch4">Portfolio Section</label>
+                </div>
 
-            </form>
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                  <input type="checkbox" name="contact" class="custom-control-input" id="customSwitch5" <?php
+                                                                                                        if ($user_data['contact_section']) {
+                                                                                                          echo "checked";
+                                                                                                        } ?>>
+                  <label class="custom-control-label" for="customSwitch5">Contact Section</label>
+                </div>
+                <input type="submit" class="btn btn-sm btn-primary" name="update-section" value="Save Changes">
+
+              </form>
+            <?php
+            }
+            ?>
           </div>
           <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
@@ -215,7 +428,7 @@ $user_data = mysqli_fetch_array($run);
       <strong>Copyright &copy; 2022 <a href="https://adminlte.io">Alexandre Tchami</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.1.0-rc
+        <b>Version</b> 3.1.0
       </div>
     </footer>
 

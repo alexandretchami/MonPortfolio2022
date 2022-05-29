@@ -50,7 +50,7 @@ $user_data = mysqli_fetch_array($run);
 
       <h1><a href="index.php"><?php echo $user_data['title']; ?></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      <!-- <a href="index.php" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
       <h2><?php echo $user_data['subtitle']; ?></h2>
 
       <nav id="navbar" class="navbar">
@@ -371,7 +371,7 @@ $user_data = mysqli_fetch_array($run);
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+            <img src="images/<?php echo $user_data['profile_pic']; ?>" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>App 1</h4>
               <p>App</p>
@@ -580,7 +580,7 @@ $user_data = mysqli_fetch_array($run);
     <!-- You can delete the links only if you purchased the pro version. -->
     <!-- Licensing information: https://bootstrapmade.com/license/ -->
     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
-    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    Designed by <a href="https://bootstrapmade.com/">Alexandre Tchami</a>
   </div>
 
   <!-- Vendor JS Files -->

@@ -1,4 +1,7 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+
 $db = mysqli_connect('localhost', 'root', '', 'alexandreportfolio') or die("database not connected !");
