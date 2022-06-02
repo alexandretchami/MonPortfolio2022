@@ -515,7 +515,7 @@ $user_data = mysqli_fetch_array($run);
           <div class="info-box">
             <i class="bx bx-map"></i>
             <h3>My Address</h3>
-            <p>A108 Adam Street, New York, NY 535022</p>
+            <p><?php echo $user_data['address']; ?></p>
           </div>
         </div>
 
@@ -527,7 +527,7 @@ $user_data = mysqli_fetch_array($run);
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+              <a href="#" class="github"><i class="bi bi-github"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
@@ -537,14 +537,14 @@ $user_data = mysqli_fetch_array($run);
           <div class="info-box">
             <i class="bx bx-envelope"></i>
             <h3>Email Me</h3>
-            <p>contact@example.com</p>
+            <p><?php echo $user_data['email']; ?></p>
           </div>
         </div>
         <div class="col-md-6 mt-4 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-phone-call"></i>
             <h3>Call Me</h3>
-            <p>+1 5589 55488 55</p>
+            <p><?php echo $user_data['mobile']; ?></p>
           </div>
         </div>
       </div>
@@ -555,7 +555,8 @@ $user_data = mysqli_fetch_array($run);
             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
           </div>
           <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            <input type="e
+            mail" class="form-control" name="email" id="email" placeholder="Your Email" required>
           </div>
         </div>
         <div class="form-group mt-3">
