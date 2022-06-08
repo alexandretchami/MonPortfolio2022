@@ -109,7 +109,7 @@ if (isset($_POST['add-resume'])) {
   $time = $_POST['time'];
   $about = $_POST['about'];
 
-  $query = "INSERT INTO resume (type,title,time,org,about) VALUES('$type','$title','$time','$org','$about') ";
+  $query = "INSERT INTO resume (type,title,time,org,about_exp ) VALUES('$type','$title','$time','$org','$about') ";
 
   $run = mysqli_query($db, $query);
   if ($run) {
@@ -182,19 +182,24 @@ if (isset($_POST['update-socialmedia'])) {
 
 if (isset($_POST['update-background'])) {
 
+  var_dump($_FILES);
 
   $imagename = time() . $_FILES['background']['name'];
+
   $imgtemp = $_FILES['background']['tmp_name'];
 
-
-  move_uploaded_file($imgtemp, "../images/$imagename");
+  $upload_files = __DIR__ . "/../images/$imagename";
+  var_dump($upload_files);
+  var_dump($imgtemp);
+  $res = move_uploaded_file($imgtemp, $upload_files);
+  var_dump($res);
 
   $query = "UPDATE site_background SET ";
   $query .= "background_img='$imagename' WHERE id=1";
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?changebackground=true';</script>";
+    /*echo "<script>window.location.href = '../admin/index.php?changebackground=true';</script>";*/
   }
 }
 
