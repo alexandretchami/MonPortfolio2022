@@ -18,7 +18,7 @@ if (isset($_POST['update-section'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php';</script>";
+    header("Location: ../admin/index.php");
   }
 }
 
@@ -39,7 +39,7 @@ if (isset($_POST['update-home'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?homesetting=true';</script>";
+    header("Location: ../admin/index.php?homesetting=true");
   }
 }
 
@@ -69,7 +69,7 @@ if (isset($_POST['update-about'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?aboutsetting=true';</script>";
+    header("Location: ../admin/index.php?aboutsetting=true");
   }
 }
 
@@ -82,7 +82,7 @@ if (isset($_POST['add-skill'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?aboutsetting=true';</script>";
+    header("Location: ../admin/index.php?aboutsetting=true");
   }
 }
 
@@ -95,7 +95,7 @@ if (isset($_POST['add-pi'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?aboutsetting=true';</script>";
+    header("Location: ../admin/index.php?aboutsetting=true");
   }
 }
 
@@ -113,7 +113,7 @@ if (isset($_POST['add-resume'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?resumesetting=true';</script>";
+    header("Location: ../admin/index.php?resumesetting=true");
   }
 }
 
@@ -135,7 +135,7 @@ if (isset($_POST['add-project'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?portfoliosetting=true';</script>";
+    header("Location: ../admin/index.php?portfoliosetting=true");
   }
 }
 
@@ -153,7 +153,7 @@ if (isset($_POST['update-contact'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?contactsetting=true';</script>";
+    header("Location: ../admin/index.php?contactsetting=true");
   }
 }
 
@@ -176,30 +176,26 @@ if (isset($_POST['update-socialmedia'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?contactsetting=true';</script>";
+    header("Location: ../admin/index.php?contactsetting=true");
   }
 }
 
 if (isset($_POST['update-background'])) {
-
-  var_dump($_FILES);
-
   $imagename = time() . $_FILES['background']['name'];
 
   $imgtemp = $_FILES['background']['tmp_name'];
 
   $upload_files = __DIR__ . "/../images/$imagename";
-  var_dump($upload_files);
-  var_dump($imgtemp);
+
   $res = move_uploaded_file($imgtemp, $upload_files);
-  var_dump($res);
+
 
   $query = "UPDATE site_background SET ";
   $query .= "background_img='$imagename' WHERE id=1";
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    /*echo "<script>window.location.href = '../admin/index.php?changebackground=true';</script>";*/
+    header("Location: ../admin/index.php?changebackground=true");
   }
 }
 
@@ -230,7 +226,7 @@ if (isset($_POST['update-seo'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?seosetting=true';</script>";
+    header("Location: ../admin/index.php?seosetting=true");
   }
 }
 
@@ -262,6 +258,6 @@ if (isset($_POST['update-account'])) {
 
   $run = mysqli_query($db, $query);
   if ($run) {
-    echo "<script>window.location.href = '../admin/index.php?accountsetting=true';</script>";
+    header("Location: ../admin/index.php?accountsetting=true");
   }
 }

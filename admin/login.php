@@ -12,9 +12,9 @@ if (isset($_POST['login'])) {
     $_SESSION['emailId'] = $_POST['email'];
 
     //Redirect to HomePage Admin
-    echo "<script>window.location.href = 'index.php';</script>";
+    header("Location: index.php");
   } else {
-    echo "<script>alert('Incorrect email id or password !')</script>";
+    echo "Incorrect email id or password ! ";
   }
 }
 ?>

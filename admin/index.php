@@ -1,7 +1,7 @@
 <?php
 require('../include/db.php');
 if (!isset($_SESSION['isUserLoggedIn'])) {
-  echo "<script>window.location.href = 'login.php';</script>";
+  header("Location: login.php");
 }
 $query = "SELECT * FROM home,section_control,social_media,about,contact,site_background,seo,admin";
 $run = mysqli_query($db, $query);
@@ -125,7 +125,7 @@ $user_data = mysqli_fetch_array($run);
               <a href="index.php?aboutsetting=true" class="nav-link">
                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                 <p>
-                  About Seting
+                  About Setting
                 </p>
               </a>
 
@@ -247,7 +247,7 @@ $user_data = mysqli_fetch_array($run);
             ?>
               <div class="card card-primary col-lg-12">
                 <div class="card-header">
-                  <h3 class="card-title">Update About</h3>
+                  <h3 class="card-title">php</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -264,7 +264,7 @@ $user_data = mysqli_fetch_array($run);
                     <div class="form-group">
                       <label for="exampleInputEmail1">About Headline</label>
                       <input type="text" class="form-control" name="about_title" value="<?php echo $user_data['about_title']; ?>" id="exampleInputEmail1" placeholder="Enter headline">
-                    </div>
+                    </div>back
 
                     <div class="form-group">
                       <label for="exampleInputPassword1">About Subtitle</label>
@@ -566,7 +566,7 @@ $user_data = mysqli_fetch_array($run);
                             <td><?php echo $pi['project_type']; ?></td>
                             <td><img src="../images/<?php echo $pi['project_pic'];  ?>" style="width:150px"></td>
                             <td><?php echo $pi['project_name']; ?></td>
-                            <td><a href="<?php echo $pi['project_link']; ?>" targer="_blank">Open Link</a></td>
+                            <td><a href="<?php echo $pi['project_link']; ?>" target="_blank">Open Link</a></td>
 
 
                             <td>
